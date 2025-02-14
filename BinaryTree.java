@@ -224,15 +224,15 @@ public class BinaryTree {
 
         // ADD YOUR CODE HERE -- USE DEPTH FIRST SEARCH OF
         // BINARY TREE (WHICH IS BASED ON RECURSION)
-        if (node == null){
-            return;
+        if (node == null){ //if statement checks if the tree is empty
+            return; 
         }
 
-        if (node.data == oldVal){
+        if (node.data == oldVal){ //if statement checks if the current node is the one that needs to be changed
             node.data = newVal;
         }
 
-        replaceValueHelper(node.left, oldVal, newVal);
+        replaceValueHelper(node.left, oldVal, newVal);  //recursion statements to traverse the whole tree 
         replaceValueHelper(node.right, oldVal, newVal);
 
     }
@@ -256,7 +256,7 @@ public class BinaryTree {
 
         // ADD YOUR CODE HERE -- USE DEPTH FIRST SEARCH OF
         // BINARY TREE (WHICH IS BASED ON RECURSION)
-        if (node == null) {
+        if (node == null) { //if statement checks if the tree is empty
             return Integer.MAX_VALUE;
             
         }
@@ -289,7 +289,7 @@ public class BinaryTree {
         // BINARY TREE (WHICH IS BASED ON RECURSION)
 
         // return -1; // RECALL, IF TREE IS EMPTY, RETURN -1
-        if (node == null){
+        if (node == null){ //if statement checks if the tree is empty
             return 0;
         }
 
@@ -341,6 +341,16 @@ public class BinaryTree {
         // COUNT LOCATIONS IN THE RETURNED ARRAY AS SHOWN BELOW, ELSE
         // THE 'SUM' IS RETURNED IN INDEX LOCATION 0, AND COUNT IS LOCATION 1
 
-        return new int[]{0, 0};
+        if (n == null){ //if statement checks if the tree is empty
+            return new int[]{0, 0};
+        }
+        int [] left = averageHelper(n.left);
+        int [] right = averageHelper(n.right);
+
+        int sum = n.data + left[0] + right[0];
+
+        int count = 1 + left[1] + right[1];
+
+        return new int[]{sum, count};
     }
 }
