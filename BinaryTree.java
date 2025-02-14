@@ -256,8 +256,17 @@ public class BinaryTree {
 
         // ADD YOUR CODE HERE -- USE DEPTH FIRST SEARCH OF
         // BINARY TREE (WHICH IS BASED ON RECURSION)
+        if (node == null) {
+            return Integer.MAX_VALUE;
+            
+        }
+        int left = findMinHelper(node.left);
+        int right = findMinHelper(node.right);
+        
+        return Math.min(node.data, Math.min(left, right));
 
-        return Integer.MAX_VALUE;
+
+
     }
 
 
@@ -280,9 +289,20 @@ public class BinaryTree {
         // BINARY TREE (WHICH IS BASED ON RECURSION)
 
         // return -1; // RECALL, IF TREE IS EMPTY, RETURN -1
+        if (node == null){
+            return 0;
+        }
 
+        int nodeCount = 0;
 
-        return -1;
+        if (node.data > val){
+            nodeCount += 1;
+        }
+
+        nodeCount += nodesGTHelper(node.left, val);
+        nodeCount += nodesGTHelper(node.right, val);
+
+        return nodeCount ;
     }
 
 
