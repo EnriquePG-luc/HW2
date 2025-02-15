@@ -260,10 +260,10 @@ public class BinaryTree {
             return Integer.MAX_VALUE;
             
         }
-        int left = findMinHelper(node.left);
+        int left = findMinHelper(node.left); //Recursion to traverse the whole tree
         int right = findMinHelper(node.right);
         
-        return Math.min(node.data, Math.min(left, right));
+        return Math.min(node.data, Math.min(left, right)); //math method to find minimums between nodes per recurssion
 
 
 
@@ -295,14 +295,14 @@ public class BinaryTree {
 
         int nodeCount = 0;
 
-        if (node.data > val){
+        if (node.data > val){ //checks the value of each node and accumulates the count of larger than val
             nodeCount += 1;
         }
 
-        nodeCount += nodesGTHelper(node.left, val);
-        nodeCount += nodesGTHelper(node.right, val);
+        nodeCount += nodesGTHelper(node.left, val); //adds to the node count for the whole trees
+        nodeCount += nodesGTHelper(node.right, val);//reccursion for right side of tree
 
-        return nodeCount ;
+        return nodeCount; 
     }
 
 
@@ -344,13 +344,14 @@ public class BinaryTree {
         if (n == null){ //if statement checks if the tree is empty
             return new int[]{0, 0};
         }
-        int [] left = averageHelper(n.left);
-        int [] right = averageHelper(n.right);
 
-        int sum = n.data + left[0] + right[0];
+        int [] left = averageHelper(n.left); //recursion to add up the left side of the subtree
+        int [] right = averageHelper(n.right); //recursion to add up the right side of the subtree
 
-        int count = 1 + left[1] + right[1];
+        int sum = n.data + left[0] + right[0]; //adds the sum of the left and right right side accounting for the recursion
 
-        return new int[]{sum, count};
+        int count = 1 + left[1] + right[1]; //adds the count of left and right side acounting for recursion
+
+        return new int[]{sum, count}; //returns the sum and the count
     }
 }
